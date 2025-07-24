@@ -1,43 +1,40 @@
-const path = require("path"); // Importa o módulo 'path' do Node.js para lidar com caminhos de arquivo
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin"); // Importa o HtmlWebpackPlugin
+const CopyPlugin = require("copy-webpack-plugin"); // Importa o CopyPlugin
 
 module.exports = {
-  // Define o modo do Webpack: 'development' para desenvolvimento, 'production' para produção
   mode: "development",
-
-  // Ponto de entrada da sua aplicação (onde o Webpack começa a empacotar)
-  entry: "./src/main.js", // Seu arquivo JavaScript principal
-
-  // Onde o Webpack vai gerar os arquivos empacotados
+  entry: "./src/main.js",
   output: {
-    filename: "bundle.js", // Nome do arquivo JavaScript final
-    path: path.resolve(__dirname, "dist"), // Pasta de saída, usando 'dist'
-    clean: true, // Limpa a pasta 'dist' antes de cada build
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
-
-  // Configurações para o servidor de desenvolvimento local
   devServer: {
-    static: "./dist", // Serve os arquivos da pasta 'dist'
-    open: true, // Abre o navegador automaticamente ao iniciar o servidor
-    hot: true, // Habilita o Hot Module Replacement (atualização sem recarregar a página)
-    port: 8080, // Porta do servidor de desenvolvimento
+    static: "./dist",
+    open: true,
+    hot: true,
+    port: 6197, // Adicionamos a porta aqui, como conversamos
   },
-
-  // Regras para como o Webpack deve lidar com diferentes tipos de arquivos (loaders)
   module: {
     rules: [
-      //Exemplo de regra para CSS (será adicionada depois)
+      // Regra para CSS:
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/, // Testa se o arquivo termina com .css
+        use: ["style-loader", "css-loader"], // Usa style-loader e css-loader
       },
+      // Você pode adicionar mais regras aqui para outros tipos de arquivos (imagens, etc.)
     ],
   },
-
   plugins: [
-    // Exemplo de plugin para HTML (será adicionado depois)
+    // Plugin para gerar o HTML:
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "index.html",
+      template: "./src/index.html", // Usa seu index.html da pasta src como template
+      filename: "index.html", // O nome do arquivo HTML de saída na pasta dist
+    }),
+    // Plugin para copiar arquivos (ex: imagens, fontes) da src para a dist:
+    new CopyPlugin({
+      patterns: [{ from: "src/assets", to: "assets", noErrorOnMissing: true }],
     }),
   ],
 };

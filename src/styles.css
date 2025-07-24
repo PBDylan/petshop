@@ -1,0 +1,345 @@
+/* Importação das fontes do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&family=Inter:wght@400;500;700&display=swap");
+
+/* Variáveis CSS para as cores */
+:root {
+  /* Conteúdo */
+  --content-primary: #ffffff;
+  --content-secondary: #98959d;
+  --content-tertiary: #666666;
+  --content-brand: #9282fa; /* Roxo */
+
+  /* Background */
+  --background-primary: #151515;
+  --background-secondary: #1e1e1e;
+  --background-tertiary: #23242c;
+  --background-brand: #9282fa; /* Roxo */
+  --background-highlights: #bdb4fa; /* Roxo mais claro */
+
+  /* Borda */
+  --border-primary: #3e3c41;
+  --border-secondary: #86818c;
+  --border-brand: #9282fa;
+  --border-divisor: #353339;
+
+  /* Accent (Acentos) */
+  --accent-blue: #027df0;
+  --accent-blue-light: #16487a;
+  --accent-yellow: #f0dc02;
+  --accent-yellow-light: #756e1b;
+  --accent-orange: #f09102;
+  --accent-orange-light: #75501b;
+
+  /* Tipografia */
+  --font-family-inter-tight: "Inter Tight", sans-serif;
+  --font-family-inter: "Inter", sans-serif;
+
+  /* Tamanhos de Fonte e Pesos (baseado no Figma) */
+  --font-size-title: 24px;
+  --line-height-title: 32px;
+  --font-weight-title: bold;
+
+  --font-size-paragraph-medium: 14px;
+  --line-height-paragraph-medium: 24px;
+  --font-weight-paragraph-medium: medium;
+
+  --font-size-paragraph-small: 12px;
+  --line-height-paragraph-small: 16px;
+  --font-weight-paragraph-small: medium;
+
+  --font-size-label-large: 16px;
+  --line-height-label-large: 24px;
+  --font-weight-label-large: bold;
+
+  --font-size-label-medium: 14px;
+  --line-height-label-medium: 24px;
+  --font-weight-label-medium: bold;
+
+  --font-size-label-small: 12px;
+  --line-height-label-small: 16px;
+  --font-weight-label-small: medium;
+
+  --font-size-link: 12px;
+  --line-height-link: 16px;
+  --font-weight-link: medium;
+}
+
+/* Estilos globais para reset e corpo da página */
+body {
+  margin: 0; /* Remove a margem padrão do navegador */
+  padding: 0; /* Remove o padding padrão do navegador */
+  font-family: var(
+    --font-family-inter
+  ); /* Define a fonte padrão para o corpo */
+  background-color: var(
+    --background-primary
+  ); /* Define o background principal */
+  color: var(--content-primary); /* Define a cor do texto principal */
+  line-height: 1.6; /* Espaçamento entre linhas padrão */
+}
+
+/* Reset básico para elementos */
+* {
+  box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(
+    --font-family-inter-tight
+  ); /* Títulos com a fonte Inter Tight */
+  color: var(--content-primary); /* Cor padrão para títulos */
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* Estilos para o Container Principal */
+.container {
+  max-width: 1200px; /* Largura máxima para centralizar o conteúdo */
+  margin: 0 auto; /* Centraliza o container na página */
+  padding: 20px; /* Espaçamento interno */
+  display: flex; /* Para organizar o header e o conteúdo principal */
+  flex-direction: column; /* Coloca os itens em coluna */
+  min-height: 100vh; /* Ocupa a altura total da viewport */
+}
+
+/* Estilos para o Cabeçalho (Header) */
+.header {
+  background-color: var(--background-secondary); /* Cor de fundo do Figma */
+  padding: 16px 24px; /* Espaçamento interno */
+  border-radius: 8px; /* Cantos arredondados */
+  margin-bottom: 24px; /* Espaço abaixo do header */
+  display: flex;
+  align-items: center; /* Alinha o logo verticalmente */
+  height: 56px; /* Altura do header conforme Figma */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaçamento entre ícone e texto do logo */
+}
+
+.logo-icon {
+  font-size: 24px; /* Tamanho do ícone (emoji por enquanto) */
+  color: var(--content-brand); /* Cor roxa do brand */
+}
+
+.logo-text {
+  font-family: var(--font-family-inter-tight); /* Fonte do título */
+  font-size: var(--font-size-title); /* 24px */
+  font-weight: var(--font-weight-title); /* Bold */
+  color: var(--content-primary); /* Cor branca */
+}
+
+/* Estilos para o Conteúdo Principal */
+.main-content {
+  flex-grow: 1; /* Ocupa o espaço restante */
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Espaçamento entre as seções */
+  padding-bottom: 80px; /* Espaço para o botão flutuante no final */
+  position: relative; /* Para posicionamento do botão flutuante */
+}
+
+/* Estilos para o Cabeçalho da Agenda (Sua Agenda) */
+.agenda-header {
+  background-color: var(
+    --background-primary
+  ); /* Fundo transparente ou da cor principal */
+  margin-bottom: 0; /* Ajuste para o gap do main-content */
+}
+
+.agenda-title {
+  font-family: var(--font-family-inter-tight);
+  font-size: 32px; /* Aumentado um pouco para se parecer mais com o Figma */
+  font-weight: bold;
+  color: var(--content-primary);
+  margin-bottom: 8px;
+}
+
+.agenda-description {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-medium); /* 14px */
+  color: var(--content-secondary); /* Cor cinza */
+  margin-bottom: 24px;
+}
+
+/* Seletor de Data */
+.date-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--background-tertiary); /* Fundo cinza escuro */
+  border: 1px solid var(--border-primary); /* Borda sutil */
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: fit-content; /* Largura ajustada ao conteúdo */
+  cursor: pointer;
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-label-large); /* 16px */
+  color: var(--content-primary);
+}
+
+.date-icon {
+  color: var(--content-brand); /* Cor roxa para o ícone */
+  font-size: 18px; /* Ajuste do tamanho do ícone */
+}
+
+.dropdown-icon {
+  color: var(--content-secondary); /* Cor cinza para o ícone de dropdown */
+  font-size: 14px; /* Ajuste do tamanho do ícone */
+}
+
+/* Estilos para a Lista de Agendamentos */
+.agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Espaço entre as seções Manhã, Tarde, Noite */
+}
+
+.time-slot {
+  background-color: var(
+    --background-secondary
+  ); /* Fundo dos blocos de horário */
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid var(--border-primary); /* Borda sutil */
+}
+
+.time-slot-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px; /* Espaço entre o cabeçalho do slot e os agendamentos */
+}
+
+.time-slot-icon {
+  font-size: 20px; /* Tamanho dos ícones (sol, nuvem, lua) */
+  color: var(--content-brand); /* Cor roxa */
+}
+
+.time-slot-title {
+  font-family: var(--font-family-inter-tight);
+  font-size: var(--font-size-label-large); /* 16px */
+  font-weight: bold;
+  color: var(--content-primary);
+  flex-grow: 1; /* Ocupa espaço para empurrar o time-range para a direita */
+}
+
+.time-range {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-medium); /* 14px */
+  color: var(--content-secondary);
+}
+
+.appointments {
+  list-style: none; /* Remove os marcadores de lista padrão */
+  padding: 0;
+  margin: 0;
+}
+
+.appointment-item {
+  display: flex;
+  align-items: center;
+  background-color: var(
+    --background-tertiary
+  ); /* Fundo dos itens de agendamento */
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px; /* Espaço entre os itens de agendamento */
+  border: 1px solid var(--border-divisor); /* Borda divisora */
+}
+
+.appointment-item:last-child {
+  margin-bottom: 0; /* Remove margem do último item */
+}
+
+.appointment-time {
+  font-family: var(--font-family-inter-tight);
+  font-size: var(--font-size-label-large); /* 16px */
+  font-weight: bold;
+  color: var(--content-primary);
+  min-width: 60px; /* Largura mínima para o horário */
+  text-align: center;
+  margin-right: 16px; /* Espaço após o horário */
+}
+
+.appointment-details {
+  flex-grow: 1; /* Ocupa o máximo de espaço */
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Espaço entre as linhas de detalhe */
+}
+
+.pet-name,
+.event-name {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-medium);
+  font-weight: bold; /* Conforme Figma */
+  color: var(--content-primary);
+}
+
+.tutor-name {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-medium);
+  color: var(--content-secondary);
+}
+
+.service-description,
+.event-note {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-small); /* 12px */
+  color: var(--content-secondary);
+}
+
+/* Botão "Remover agendamento" e "Piquenique ao amanhecer" */
+.remove-button {
+  background: none;
+  border: none;
+  color: var(--content-secondary); /* Cor do texto no Figma */
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-small);
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap; /* Evita quebra de linha no texto do botão */
+  margin-left: 16px; /* Espaço à esquerda do botão */
+}
+
+.remove-button:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para o botão flutuante "NOVO AGENDAMENTO" */
+.new-appointment-button {
+  position: fixed; /* Fixa o botão na tela */
+  bottom: 24px; /* Distância do fundo */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajuste fino para centralizar */
+  background-color: var(--background-brand); /* Cor roxa do Figma */
+  color: var(--content-primary); /* Texto branco */
+  font-family: var(--font-family-inter-tight); /* Fonte do título */
+  font-size: var(--font-size-label-large); /* 16px */
+  font-weight: bold;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.new-appointment-button:hover {
+  background-color: var(
+    --background-highlights
+  ); /* Tom de roxo mais claro no hover */
+}

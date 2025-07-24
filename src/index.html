@@ -1,13 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agendamento Petshop</title>
+    <title>Mundo Pet - Sua Agenda</title>
   </head>
   <body>
-    <h1>Teste</h1>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <span class="logo-icon">🐾</span>
+          <span class="logo-text">MUNDO PET</span>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="agenda-header">
+          <h1 class="agenda-title">Sua agenda</h1>
+          <p class="agenda-description">
+            Aqui você pode ver todos os clientes e serviços agendados para hoje.
+          </p>
+          <div class="date-selector">
+            <span class="date-icon">🗓️</span>
+            <span class="selected-date">10/01/2024</span>
+            <span class="dropdown-icon">🔽</span>
+          </div>
+        </section>
+
+        <section class="agenda-list">
+          <div class="time-slot morning">
+            <div class="time-slot-header">
+              <span class="time-slot-icon">☀️</span>
+              <h2 class="time-slot-title">Manhã</h2>
+              <span class="time-range">09h-12h</span>
+            </div>
+            <ul class="appointments">
+              <li class="appointment-item">
+                <div class="appointment-time">09:00</div>
+                <div class="appointment-details">
+                  <span class="pet-name">Thor</span> /
+                  <span class="tutor-name">Fernanda Costa</span>
+                  <span class="service-description">Vacinação</span>
+                </div>
+                <button class="remove-button">Remover agendamento</button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="time-slot afternoon">
+            <div class="time-slot-header">
+              <span class="time-slot-icon">⛅</span>
+              <h2 class="time-slot-title">Tarde</h2>
+              <span class="time-range">13h-18h</span>
+            </div>
+            <ul class="appointments">
+              <li class="appointment-item">
+                <div class="appointment-time">13:00</div>
+                <div class="appointment-details">
+                  <span class="pet-name">Mel</span> /
+                  <span class="tutor-name">João Souza</span>
+                  <span class="service-description">Corte de Unhas</span>
+                </div>
+                <button class="remove-button">Remover agendamento</button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="time-slot night">
+            <div class="time-slot-header">
+              <span class="time-slot-icon">🌙</span>
+              <h2 class="time-slot-title">Noite</h2>
+              <span class="time-range">19h-21h</span>
+            </div>
+            <ul class="appointments">
+              <li class="appointment-item luau-duda">
+                <div class="appointment-time">20:00</div>
+                <div class="appointment-details">
+                  <span class="event-name">Luau com a Duda</span>
+                  <span class="event-note"
+                    >Traga sua bebida. Traga seu alimento.</span
+                  >
+                </div>
+                <button class="remove-button">Remover agendamento</button>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <button class="new-appointment-button">NOVO AGENDAMENTO</button>
+      </main>
+    </div>
+
+    <script src="main.js"></script>
   </body>
-  <script src="main.js"></script>
-  ;
 </html>
