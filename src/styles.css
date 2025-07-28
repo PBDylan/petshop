@@ -20,7 +20,7 @@
   --border-primary: #3e3c41;
   --border-secondary: #86818c;
   --border-brand: #9282fa;
-  --border-divisor: #353339;
+  --border-divisor: #353339; /* Cor da borda divisora, mais sutil */
 
   /* Accent (Acentos) */
   --accent-blue: #027df0;
@@ -106,98 +106,99 @@ p {
 .container {
   max-width: 1200px; /* Largura máxima para centralizar o conteúdo */
   margin: 0 auto; /* Centraliza o container na página */
-  padding: 20px; /* Espaçamento interno */
-  display: flex; /* Para organizar o header e o conteúdo principal */
-  flex-direction: column; /* Coloca os itens em coluna */
-  min-height: 100vh; /* Ocupa a altura total da viewport */
+  padding: 24px; /* Aumentado um pouco para 24px conforme o Figma */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 24px; /* Adicionado gap para separar o header do main-content */
 }
 
 /* Estilos para o Cabeçalho (Header) */
 .header {
-  background-color: var(--background-secondary); /* Cor de fundo do Figma */
-  padding: 16px 24px; /* Espaçamento interno */
-  border-radius: 8px; /* Cantos arredondados */
-  margin-bottom: 24px; /* Espaço abaixo do header */
+  background-color: var(--background-secondary);
+  padding: 16px 24px;
+  border-radius: 8px;
+  margin-bottom: 0; /* Removido a margem inferior pois o container agora tem gap */
   display: flex;
-  align-items: center; /* Alinha o logo verticalmente */
-  height: 56px; /* Altura do header conforme Figma */
+  align-items: center;
+  height: 56px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px; /* Espaçamento entre ícone e texto do logo */
+  gap: 8px;
 }
 
 .logo-icon {
-  font-size: 24px; /* Tamanho do ícone (emoji por enquanto) */
-  color: var(--content-brand); /* Cor roxa do brand */
+  font-size: 24px;
+  color: var(--content-brand); /* Cor roxa, como no Figma */
 }
 
 .logo-text {
-  font-family: var(--font-family-inter-tight); /* Fonte do título */
-  font-size: var(--font-size-title); /* 24px */
-  font-weight: var(--font-weight-title); /* Bold */
-  color: var(--content-primary); /* Cor branca */
+  font-family: var(--font-family-inter-tight);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  color: var(--content-primary);
 }
 
 /* Estilos para o Conteúdo Principal */
 .main-content {
-  flex-grow: 1; /* Ocupa o espaço restante */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px; /* Espaçamento entre as seções */
-  padding-bottom: 80px; /* Espaço para o botão flutuante no final */
-  position: relative; /* Para posicionamento do botão flutuante */
+  gap: 24px;
+  padding-bottom: 96px; /* Aumentado para dar mais espaço para o botão flutuante */
+  position: relative;
 }
 
 /* Estilos para o Cabeçalho da Agenda (Sua Agenda) */
 .agenda-header {
-  background-color: var(
-    --background-primary
-  ); /* Fundo transparente ou da cor principal */
-  margin-bottom: 0; /* Ajuste para o gap do main-content */
+  margin-bottom: 0;
 }
 
 .agenda-title {
   font-family: var(--font-family-inter-tight);
-  font-size: 32px; /* Aumentado um pouco para se parecer mais com o Figma */
+  font-size: 32px;
   font-weight: bold;
   color: var(--content-primary);
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* Mantido em 8px */
 }
 
 .agenda-description {
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-paragraph-medium); /* 14px */
-  color: var(--content-secondary); /* Cor cinza */
+  font-size: var(--font-size-paragraph-medium);
+  color: var(--content-secondary);
   margin-bottom: 24px;
 }
 
 /* Seletor de Data */
 .date-selector {
-  display: flex;
+  display: inline-flex; /* Use inline-flex para não ocupar a largura total */
   align-items: center;
   gap: 8px;
-  background-color: var(--background-tertiary); /* Fundo cinza escuro */
-  border: 1px solid var(--border-primary); /* Borda sutil */
+  background-color: var(--background-tertiary);
+  border: 1px solid var(--border-divisor); /* Alterado para border-divisor, que é mais sutil */
   border-radius: 8px;
   padding: 12px 16px;
-  width: fit-content; /* Largura ajustada ao conteúdo */
   cursor: pointer;
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-label-large); /* 16px */
-  color: var(--content-primary);
+  font-size: var(--font-size-label-large);
+  color: var(--content-secondary); /* Corrigido para content-secondary */
+}
+
+.date-selector .selected-date {
+  color: var(--content-primary); /* Garante que a data em si seja branca */
 }
 
 .date-icon {
-  color: var(--content-brand); /* Cor roxa para o ícone */
-  font-size: 18px; /* Ajuste do tamanho do ícone */
+  color: var(--content-brand); /* Cor roxa, como no Figma */
+  font-size: 18px;
 }
 
 .dropdown-icon {
-  color: var(--content-secondary); /* Cor cinza para o ícone de dropdown */
-  font-size: 14px; /* Ajuste do tamanho do ícone */
+  color: var(--content-secondary);
+  font-size: 14px;
 }
 
 /* Estilos para a Lista de Agendamentos */
@@ -208,44 +209,46 @@ p {
 }
 
 .time-slot {
-  background-color: var(
-    --background-secondary
-  ); /* Fundo dos blocos de horário */
+  background-color: var(--background-secondary);
   border-radius: 8px;
-  padding: 24px;
-  border: 1px solid var(--border-primary); /* Borda sutil */
+  padding: 24px; /* Mantido em 24px */
+  border: none; /* Removido a borda aqui, conforme Figma */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adicionado uma sombra sutil */
 }
 
 .time-slot-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px; /* Espaço entre o cabeçalho do slot e os agendamentos */
+  margin-bottom: 20px; /* Ajustado para 20px */
 }
 
 .time-slot-icon {
-  font-size: 20px; /* Tamanho dos ícones (sol, nuvem, lua) */
-  color: var(--content-brand); /* Cor roxa */
+  font-size: 20px;
+  color: var(--content-brand); /* Cor roxa, como no Figma */
 }
 
 .time-slot-title {
   font-family: var(--font-family-inter-tight);
-  font-size: var(--font-size-label-large); /* 16px */
+  font-size: var(--font-size-label-large);
   font-weight: bold;
   color: var(--content-primary);
-  flex-grow: 1; /* Ocupa espaço para empurrar o time-range para a direita */
+  flex-grow: 1;
 }
 
 .time-range {
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-paragraph-medium); /* 14px */
+  font-size: var(--font-size-paragraph-medium);
   color: var(--content-secondary);
 }
 
 .appointments {
-  list-style: none; /* Remove os marcadores de lista padrão */
+  list-style: none;
   padding: 0;
   margin: 0;
+  /* Adiciona a borda divisora aqui, com um estilo para os itens */
+  border-radius: 8px; /* Para as bordas da UL */
+  overflow: hidden; /* Garante que o conteúdo não vaze */
 }
 
 .appointment-item {
@@ -254,65 +257,65 @@ p {
   background-color: var(
     --background-tertiary
   ); /* Fundo dos itens de agendamento */
-  border-radius: 8px;
   padding: 16px;
-  margin-bottom: 12px; /* Espaço entre os itens de agendamento */
-  border: 1px solid var(--border-divisor); /* Borda divisora */
+  /* Removido border-radius e margin-bottom daqui */
+  border-bottom: 1px solid var(--border-divisor); /* Borda divisória entre itens */
 }
 
 .appointment-item:last-child {
-  margin-bottom: 0; /* Remove margem do último item */
+  border-bottom: none; /* Remove borda do último item */
 }
 
 .appointment-time {
   font-family: var(--font-family-inter-tight);
-  font-size: var(--font-size-label-large); /* 16px */
+  font-size: var(--font-size-label-large);
   font-weight: bold;
   color: var(--content-primary);
-  min-width: 60px; /* Largura mínima para o horário */
-  text-align: center;
-  margin-right: 16px; /* Espaço após o horário */
+  min-width: 60px;
+  text-align: left; /* Alinhamento à esquerda conforme Figma */
+  margin-right: 20px; /* Aumentado para 20px */
 }
 
 .appointment-details {
-  flex-grow: 1; /* Ocupa o máximo de espaço */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px; /* Espaço entre as linhas de detalhe */
+  gap: 4px;
 }
 
 .pet-name,
 .event-name {
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-paragraph-medium);
-  font-weight: bold; /* Conforme Figma */
+  font-size: var(--font-size-paragraph-medium); /* 14px */
+  font-weight: bold;
   color: var(--content-primary);
 }
 
 .tutor-name {
   font-family: var(--font-family-inter);
   font-size: var(--font-size-paragraph-medium);
-  color: var(--content-secondary);
+  color: var(--content-secondary); /* Corrigido para content-secondary */
 }
 
 .service-description,
 .event-note {
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-paragraph-small); /* 12px */
-  color: var(--content-secondary);
+  font-size: var(--font-size-label-small); /* 12px */
+  color: var(--content-secondary); /* Corrigido para content-secondary */
 }
 
 /* Botão "Remover agendamento" e "Piquenique ao amanhecer" */
 .remove-button {
   background: none;
   border: none;
-  color: var(--content-secondary); /* Cor do texto no Figma */
+  color: var(--content-brand); /* Alterado para content-brand (roxo) */
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-paragraph-small);
+  font-size: var(--font-size-link);
   cursor: pointer;
   padding: 0;
-  white-space: nowrap; /* Evita quebra de linha no texto do botão */
-  margin-left: 16px; /* Espaço à esquerda do botão */
+  white-space: nowrap;
+  margin-left: 16px;
+  text-decoration: none;
 }
 
 .remove-button:hover {
@@ -323,23 +326,208 @@ p {
 .new-appointment-button {
   position: fixed; /* Fixa o botão na tela */
   bottom: 24px; /* Distância do fundo */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translateX(-50%); /* Ajuste fino para centralizar */
-  background-color: var(--background-brand); /* Cor roxa do Figma */
-  color: var(--content-primary); /* Texto branco */
-  font-family: var(--font-family-inter-tight); /* Fonte do título */
-  font-size: var(--font-size-label-large); /* 16px */
+  right: 24px; /* Alterado de 'left: 50%; transform: translateX(-50%);' para 'right: 24px;' */
+  left: unset; /* Desfaz a propriedade left */
+  background-color: var(--background-brand);
+  color: var(--content-primary);
+  font-family: var(--font-family-inter-tight);
+  font-size: var(--font-size-label-large);
   font-weight: bold;
   padding: 16px 32px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
-  transition: background-color 0.3s ease; /* Transição suave */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 }
 
 .new-appointment-button:hover {
-  background-color: var(
-    --background-highlights
-  ); /* Tom de roxo mais claro no hover */
+  background-color: var(--background-highlights);
+}
+
+/* Estilos para o Modal de Agendamento */
+
+/* Overlay do Modal: Cobre toda a tela */
+.modal-overlay {
+  position: fixed; /* Fixa o modal na viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+  display: flex; /* Para centralizar o conteúdo do modal */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  z-index: 1000; /* Garante que o modal fique acima de todo o resto */
+  opacity: 1; /* Por padrão, visível para o teste, depois será 0 */
+  visibility: visible; /* Por padrão, visível para o teste, depois será hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Transição suave */
+}
+
+/* Classe para esconder o modal */
+.modal-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* Impede cliques em elementos por trás quando escondido */
+}
+
+/* Conteúdo do Modal: O formulário em si */
+.modal-content {
+  background-color: var(--background-secondary); /* Fundo escuro do modal */
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  max-width: 500px; /* Largura máxima do modal conforme Figma */
+  position: relative; /* Para posicionar o botão de fechar */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+  animation: slideUp 0.3s ease-out; /* Animação simples de entrada */
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Espaço entre os grupos do formulário */
+}
+
+/* Animação para o modal */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Botão de Fechar Modal */
+.close-modal-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--content-secondary); /* Cor cinza para o X */
+  cursor: pointer;
+  line-height: 1; /* Garante que o X esteja bem alinhado */
+  transition: color 0.2s ease;
+}
+
+.close-modal-button:hover {
+  color: var(--content-primary);
+}
+
+/* Títulos e Descrição do Modal */
+.modal-title {
+  font-family: var(--font-family-inter-tight);
+  font-size: var(--font-size-title); /* 24px */
+  font-weight: bold;
+  color: var(--content-primary);
+  margin-bottom: 8px;
+}
+
+.modal-description {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-medium); /* 14px */
+  color: var(--content-secondary);
+  margin-bottom: 0; /* Ajuste para o gap do modal-content */
+}
+
+/* Estilos do Formulário */
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaço entre os grupos do formulário */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espaço entre label e input */
+}
+
+.form-group label {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-label-small); /* 12px */
+  font-weight: medium; /* Não é bold no Figma */
+  color: var(--content-secondary); /* Cor cinza */
+}
+
+/* Estilo para inputs com ícone */
+.input-with-icon,
+.input-with-icon-dropdown {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-tertiary); /* Fundo do campo */
+  border: 1px solid var(--border-primary); /* Borda */
+  border-radius: 8px;
+  padding: 12px 16px; /* Padding interno */
+}
+
+.input-with-icon .input-icon,
+.input-with-icon-dropdown .input-icon {
+  color: var(--content-secondary); /* Cor do ícone */
+  font-size: 18px; /* Tamanho do ícone */
+  margin-right: 12px; /* Espaço entre ícone e input */
+}
+
+.input-with-icon input,
+.input-with-icon-dropdown input,
+.appointment-form textarea {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  outline: none; /* Remove a borda de foco padrão */
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-paragraph-medium); /* 14px */
+  color: var(--content-primary); /* Cor do texto digitado */
+  width: 100%; /* Garante que o input ocupe o espaço */
+}
+
+.input-with-icon input::placeholder,
+.appointment-form textarea::placeholder {
+  color: var(--content-secondary); /* Cor do placeholder */
+  opacity: 0.6; /* Deixa o placeholder um pouco mais transparente */
+}
+
+.appointment-form textarea {
+  min-height: 80px; /* Altura mínima para textarea */
+  resize: vertical; /* Permite redimensionar verticalmente */
+  padding: 12px 16px; /* Padding para textarea fora do input-with-icon */
+  background-color: var(--background-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px; /* Espaço entre os campos de data e hora */
+}
+
+.form-row .form-group {
+  flex: 1; /* Faz com que os grupos ocupem o mesmo espaço */
+}
+
+.input-with-icon-dropdown .dropdown-arrow {
+  color: var(--content-secondary);
+  font-size: 14px;
+  margin-left: 12px; /* Espaço antes da seta */
+}
+
+/* Botão AGENDAR */
+.agenda-button {
+  background-color: var(--background-brand); /* Cor roxa */
+  color: var(--content-primary); /* Texto branco */
+  font-family: var(--font-family-inter-tight);
+  font-size: var(--font-size-label-large);
+  font-weight: bold;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 8px; /* Espaço superior */
+}
+
+.agenda-button:hover {
+  background-color: var(--background-highlights);
 }

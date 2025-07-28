@@ -4,24 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mundo Pet - Sua Agenda</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link para os ícones do Streamline -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@streamlinehq/streamline-icons@1.0.0/css/streamline-icons.min.css"
+    />
   </head>
   <body>
     <div class="container">
+      <!-- Cabeçalho (Mundo Pet) -->
       <header class="header">
         <div class="logo">
-          <span class="logo-icon">🐾</span>
+          <!-- Ícone do Mundo Pet (agora Streamline) -->
+          <i class="si-paw-print logo-icon"></i>
           <span class="logo-text">MUNDO PET</span>
         </div>
+        <!-- Futuramente, pode ter mais elementos aqui -->
       </header>
 
+      <!-- Seção Principal da Agenda -->
       <main class="main-content">
         <section class="agenda-header">
           <h1 class="agenda-title">Sua agenda</h1>
           <p class="agenda-description">
             Aqui você pode ver todos os clientes e serviços agendados para hoje.
           </p>
-          <div class="date-selector">
-            <span class="date-icon">🗓️</span>
+          <div class="date-selector" id="main-date-selector">
+            <!-- Ícone de calendário (agora Streamline) -->
+            <i class="si-calendar-date date-icon"></i>
             <span class="selected-date">10/01/2024</span>
             <span class="dropdown-icon">🔽</span>
           </div>
@@ -30,59 +45,37 @@
         <section class="agenda-list">
           <div class="time-slot morning">
             <div class="time-slot-header">
-              <span class="time-slot-icon">☀️</span>
+              <!-- Ícone de sol/manhã (agora Streamline) -->
+              <i class="si-sun-solid time-slot-icon"></i>
               <h2 class="time-slot-title">Manhã</h2>
               <span class="time-range">09h-12h</span>
             </div>
             <ul class="appointments">
-              <li class="appointment-item">
-                <div class="appointment-time">09:00</div>
-                <div class="appointment-details">
-                  <span class="pet-name">Thor</span> /
-                  <span class="tutor-name">Fernanda Costa</span>
-                  <span class="service-description">Vacinação</span>
-                </div>
-                <button class="remove-button">Remover agendamento</button>
-              </li>
+              <!-- AGENDAMENTOS DA MANHÃ SERÃO ADICIONADOS AQUI VIA JAVASCRIPT -->
             </ul>
           </div>
 
           <div class="time-slot afternoon">
             <div class="time-slot-header">
-              <span class="time-slot-icon">⛅</span>
+              <!-- Ícone de tarde (agora Streamline) -->
+              <i class="si-cloud-sun time-slot-icon"></i>
               <h2 class="time-slot-title">Tarde</h2>
               <span class="time-range">13h-18h</span>
             </div>
             <ul class="appointments">
-              <li class="appointment-item">
-                <div class="appointment-time">13:00</div>
-                <div class="appointment-details">
-                  <span class="pet-name">Mel</span> /
-                  <span class="tutor-name">João Souza</span>
-                  <span class="service-description">Corte de Unhas</span>
-                </div>
-                <button class="remove-button">Remover agendamento</button>
-              </li>
+              <!-- AGENDAMENTOS DA TARDE SERÃO ADICIONADOS AQUI VIA JAVASCRIPT -->
             </ul>
           </div>
 
           <div class="time-slot night">
             <div class="time-slot-header">
-              <span class="time-slot-icon">🌙</span>
+              <!-- Ícone de noite (agora Streamline) -->
+              <i class="si-moon-solid time-slot-icon"></i>
               <h2 class="time-slot-title">Noite</h2>
               <span class="time-range">19h-21h</span>
             </div>
             <ul class="appointments">
-              <li class="appointment-item luau-duda">
-                <div class="appointment-time">20:00</div>
-                <div class="appointment-details">
-                  <span class="event-name">Luau com a Duda</span>
-                  <span class="event-note"
-                    >Traga sua bebida. Traga seu alimento.</span
-                  >
-                </div>
-                <button class="remove-button">Remover agendamento</button>
-              </li>
+              <!-- AGENDAMENTOS DA NOITE SERÃO ADICIONADOS AQUI VIA JAVASCRIPT -->
             </ul>
           </div>
         </section>
@@ -91,6 +84,73 @@
       </main>
     </div>
 
+    <!-- HTML para o Modal de Agendamento -->
+    <div id="appointment-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button class="close-modal-button">✖</button>
+        <h2 class="modal-title">Agende um atendimento</h2>
+        <p class="modal-description">
+          Preencha os dados do cliente para realizar o agendamento:
+        </p>
+
+        <form class="appointment-form">
+          <div class="form-group">
+            <label for="tutor-name">Nome do tutor</label>
+            <div class="input-with-icon">
+              <i class="si-user-circle input-icon"></i>
+              <input type="text" id="tutor-name" placeholder="Helena Souza" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pet-name">Nome do pet</label>
+            <div class="input-with-icon">
+              <i class="si-paw-print input-icon"></i>
+              <input type="text" id="pet-name" placeholder="Cheddar" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <div class="input-with-icon">
+              <i class="si-phone-call-outline input-icon"></i>
+              <input type="text" id="phone" placeholder="(00) 0 0000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="service-description">Descrição do serviço</label>
+            <textarea
+              id="service-description"
+              placeholder="Banho e tosa"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Data</label>
+              <div class="input-with-icon-dropdown">
+                <i class="si-calendar-date input-icon"></i>
+                <input type="text" id="date" placeholder="10/01/2024" />
+                <span class="dropdown-arrow">🔽</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="time">Hora</label>
+              <div class="input-with-icon-dropdown">
+                <i class="si-time-alarm-clock input-icon"></i>
+                <input type="text" id="time" placeholder="12:00" />
+                <span class="dropdown-arrow">🔽</span>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="agenda-button">AGENDAR</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="main.js"></script>
   </body>
 </html>
